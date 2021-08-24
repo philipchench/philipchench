@@ -18,8 +18,10 @@ const userSchema = new mongoose.Schema({
 
 const Users = mongoose.model("users", userSchema);
 
+const itemSchema = new mongoose.Schema({title: String, content: String});
+const Item = mongoose.model("item", itemSchema);
+
 async function createUser(req, res){
-    console.log(req.body, "reqbody");
     const user = await Users
         .findOne({name: req.body.username});
     if(!user){
@@ -51,8 +53,8 @@ async function addItem(req, res, userId, body){
     if(!user){
         return res.status(404).send("user does not exist");
     }
-    
-    const newItem = user.items.create(body);
+
+    const newItem = new Item({title: body.title, content: body.content});
     user.items.push(newItem);
     user.save(function (err) {
     if (err) return handleError(err)
