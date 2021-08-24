@@ -73,6 +73,7 @@ const UserList = ({doesExist}) => {
 
     return(
         <div>
+            <h1>{name}</h1>
             <AddItem onAdd = {addItem}/>
             {items.map((item1) => (<ListItem key = {item1._id} item = {item1} onDelete = {removeItem} />))}
         </div>
