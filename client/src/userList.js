@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import ListItem from "./listItem";
 import AddItem from "./addItem";
-
+//8/23/11pm
 const UserList = ({doesExist}) => {
     const [nameExists, setnameExists] = useState(false)
     const [items, setItems] = useState([])
