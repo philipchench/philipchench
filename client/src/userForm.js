@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
+
 const UserForm = ({ onAdd, onGet }) => {
     const [username, setUsername] = useState('')
     const [oldusername, setOldusername] = useState('')
@@ -11,12 +12,11 @@ const UserForm = ({ onAdd, onGet }) => {
         e.preventDefault()
     
         if (!username) {
-          alert('Please fill out username.')
+          alert('Please fill in your username.')
           return;
         }
     
         onAdd({ username });
-        console.log({username})
     
         setUsername('')
       }
@@ -24,12 +24,11 @@ const UserForm = ({ onAdd, onGet }) => {
       const onSubmit2 = async (e) => {
         e.preventDefault()
         if (!oldusername) {
-          alert('Please fill out username.')
+          alert('Please fill in your username.')
           return
         }
         const canGet = await onGet(oldusername);
         if (canGet){
-          console.log(canGet, "cosjdocaisjc")
           history.push(`/${oldusername}`)
         }
       }

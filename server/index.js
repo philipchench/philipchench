@@ -45,32 +45,20 @@ async function getUser(req, res, userId){
     res.json(user)
 }
 
-// async function getItem(req, res, userId, itemId){
-//     const user = await Users
-//         .findOne({name: userId});
-//     if(!user){
-//         return res.status(404).send("user does not exist");
-//     }
-//     item = user.items.id(itemId);
-//     if(!item){
-//         return res.status(404).send("item does not exist");
-//     }
-//     res.json(item)
-// }
-
 async function addItem(req, res, userId, body){
     const user = await Users
         .findOne({name: userId});
     if(!user){
         return res.status(404).send("user does not exist");
     }
-    user.items.push(body);
-
+    
+    const newItem = user.items.create(body);
+    user.items.push(newItem);
     user.save(function (err) {
     if (err) return handleError(err)
-    console.log('Success!');
+    console.log("item added");
     });
-    res.json(user)
+    res.json(newItem)
 }
 
 async function deleteItem(req, res, userId, itemId){
@@ -79,7 +67,11 @@ async function deleteItem(req, res, userId, itemId){
     if(!user){
         return res.status(404).send("user does not exist");
     }
-    user.items.id(itemId).remove();
+    const item = user.items.id(itemId);
+    if(!item){
+        return res.status(404).send("item does not exist");
+    }
+    item.remove();
     user.save(function (err) {
     if (err) return handleError(err);
     console.log('the subdocs were removed');

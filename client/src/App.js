@@ -7,7 +7,7 @@ import UserList from "./userList";
 
 function App() {
   const addUser = async (name) => {
-    const res = await fetch(`http://localhost:5000/api/users`, {
+    await fetch(`http://localhost:5000/api/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +20,6 @@ function App() {
   const userExists = async (name) =>{
     try{const res = await fetch(`http://localhost:5000/api/${name}`);
     const data = await res.json();
-    console.log(data);
     return data
   }
     catch(err){
