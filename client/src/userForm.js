@@ -46,7 +46,7 @@ const UserForm = ({ onAdd, onGet }) => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <input type='submit'/>
+          <input type='submit' value='Create' />
         </form>
         <form onSubmit={onSubmit2}>
           <div>
@@ -58,7 +58,7 @@ const UserForm = ({ onAdd, onGet }) => {
               onChange={(e) => setOldusername(e.target.value)}
             />
           </div>
-          <input type='submit'/>
+          <input type='submit' value='Log in' />
         </form>
       </div>
       
