@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 
 mongoose.connect('mongodb+srv://pinusmacbook:pinusmacbook@cluster0.iblwx.mongodb.net/ShoppingListProj?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("Connected to MongoDB"))
@@ -96,6 +97,12 @@ app.post('/api/:userId/posting', (req, res) => {
 app.delete('/api/:userId/:itemId', (req, res) => {
     deleteItem(req, res, req.params.userId, req.params.itemId)
 });
+
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname+"client/build/index.html"));
+  });
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
