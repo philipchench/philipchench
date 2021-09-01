@@ -54,7 +54,7 @@ function App() {
           <Route
             exact path='/:userId'
             render={(props) => (
-              <UserList doesExist = {getUser}/>
+              <UserList doesExist = {getUser} test={"test message sent"}/>
             )}
           />
         </Switch>

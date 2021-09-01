@@ -5,7 +5,7 @@ import ListItem from "./listItem";
 import AddItem from "./addItem";
 import Pagination from "./pagination";
 //8/23/11pm
-const UserList = ({doesExist}) => {
+const UserList = ({doesExist, test}) => {
     const [nameExists, setnameExists] = useState(false)
     const [items, setItems] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
@@ -13,6 +13,7 @@ const UserList = ({doesExist}) => {
 
     let history = useHistory();
 
+    console.log(test)
     const name = useParams().userId;
     console.log(name)
 
