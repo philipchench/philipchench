@@ -5,9 +5,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbar{
+  margin: 10px;
+  font-size: 1.4em;
+}
+.navbar label{
+  margin-right: 10px;
+  font-weight: bold;
+}
+.userform form{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.userform label{
+  margin-right: 10px;
+}
+.userform input{
+  margin-right: 10px;
+}
+.additem{
+  width: 200px;
+  margin: auto;
+}
+.additem input, .additem textarea{
+  width: 100%;
+  margin: 5px 0;
+}
+.hello{
+  font-size: 2em;
+}
+.listTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listTitle button{
+  margin-left: 10px;
+}
+.listContent{
+  margin: auto;
+  max-width: 300px;
+}
+.pagination{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.pageItem{
+  margin: 5px;
+}
+.currNumber{
+  background-color: rgb(150, 150, 150);
+  color: white;
 }

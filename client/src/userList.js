@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import ListItem from "./listItem";
 import AddItem from "./addItem";
+import Pagination from "./pagination";
 //8/23/11pm
 const UserList = ({doesExist}) => {
     const [nameExists, setnameExists] = useState(false)
     const [items, setItems] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 5
 
     let history = useHistory();
 
@@ -46,6 +49,7 @@ const UserList = ({doesExist}) => {
           console.log(newItem)
           console.log(items)
           setItems([...items, newItem])
+          setCurrentPage(1)
     }
 
     useEffect(() => {
@@ -60,6 +64,7 @@ const UserList = ({doesExist}) => {
         existence();
         const doEffect = async () =>{
             const initList = await getList(name);
+            console.log(initList)
             setItems(initList);
         }
         doEffect();
@@ -71,11 +76,27 @@ const UserList = ({doesExist}) => {
         )
     }
 
+    let indexFirst = items.length - currentPage * postsPerPage;
+    const indexLast = indexFirst + postsPerPage;
+    if(indexLast <= 0 && currentPage !== 1){
+        setCurrentPage(currentPage - 1);
+    }
+    if(indexFirst < 0){
+        indexFirst = 0
+    }
+    const currentPosts = (items.slice(indexFirst, indexLast)).reverse();
+    const paginate = (pageNumber) => {setCurrentPage(pageNumber);}
     return(
         <div>
-            <h1>Hello, {name}</h1>
+            <p className="hello">Hello, {name}!</p>
             <AddItem onAdd = {addItem}/>
-            {items.map((item1) => (<ListItem key = {item1._id} item = {item1} onDelete = {removeItem} />))}
+            {currentPosts.map((item1) => (<ListItem key = {item1._id} item = {item1} onDelete = {removeItem} />))}
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={items.length}
+                paginate={paginate}
+                currPage={currentPage}
+            />
         </div>
     )    
     

@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import UserForm from "./userForm";
 import UserList from "./userList";
-
+import Nav from "./nav";
 
 
 function App() {
@@ -39,7 +39,9 @@ function App() {
   }
 
   return (
-    <Router>
+    <div>
+      <Nav />
+      <Router>
       <div>
         <Switch>
           <Route
@@ -57,6 +59,8 @@ function App() {
         </Switch>
       </div>
     </Router>
+    
+    </div>
   );
 }
 

@@ -34,7 +34,7 @@ const UserForm = ({ onAdd, onGet }) => {
       }
 
     return (
-      <div>
+      <div className="userform">
         <form onSubmit={onSubmit}>
           <div>
             <label>Create User</label>

@@ -20,9 +20,7 @@ const AddItem = ({ onAdd }) => {
       }
 
     return (
-      <div>
-        <form onSubmit={onSubmit}>
-          <div>
+        <form className = "additem" onSubmit={onSubmit}>
             <label>Title</label>
             <input
               type='text'
@@ -31,16 +29,13 @@ const AddItem = ({ onAdd }) => {
               onChange={(e) => setTitle(e.target.value)}
             />
             <label>Content</label>
-            <input
-              type='text'
-              placeholder='Enter text'
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-          </div>
-          <input type='submit' value='Add' />
+            <textarea 
+              rows="6" 
+              placeholder="Enter text" 
+              value={content} 
+              onChange={(e) => setContent(e.target.value)}></textarea>
+            <input type='submit' value='Add' />
         </form>
-      </div>
       
     );
   }
