@@ -7,7 +7,7 @@ import Nav from "./nav";
 
 function App() {
   const addUser = async (name) => {
-    await fetch(`http://localhost:5000/api/users`, {
+    await fetch(`api/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ function App() {
   }
 
   const userExists = async (name) =>{
-    try{const res = await fetch(`http://localhost:5000/api/${name}`);
+    try{const res = await fetch(`api/${name}`);
     const data = await res.json();
     return data
   }

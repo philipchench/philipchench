@@ -16,7 +16,7 @@ const UserList = ({doesExist}) => {
     const name = useParams().userId;
 
     const getList = async (name) => {
-        try{const res = await fetch(`http://localhost:5000/api/${name}`);
+        try{const res = await fetch(`api/${name}`);
         const data = await res.json();
         return data.items
         }
@@ -27,7 +27,7 @@ const UserList = ({doesExist}) => {
       }
     
     const removeItem = async (id) =>{
-        const res = await fetch(`http://localhost:5000/api/${name}/${id}`, {
+        const res = await fetch(`api/${name}/${id}`, {
             method: 'DELETE',
           })
           if(res.status === 200){
@@ -38,7 +38,7 @@ const UserList = ({doesExist}) => {
     }
 
     const addItem = async (data) =>{
-        const res = await fetch(`http://localhost:5000/api/${name}/posting`, {
+        const res = await fetch(`api/${name}/posting`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
