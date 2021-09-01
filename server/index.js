@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/shoppingList', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://pinusmacbook:pinusmacbook@cluster0.iblwx.mongodb.net/ShoppingListProj?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error(err))
 

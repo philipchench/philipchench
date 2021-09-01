@@ -59,7 +59,9 @@ function App() {
         </Switch>
       </div>
     </Router>
-    
+    <div className='footer'>
+      <span>Developed by Philip Chen (Beta)</span>
+    </div>
     </div>
   );
 }
