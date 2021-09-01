@@ -4,7 +4,9 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 
-mongoose.connect('mongodb+srv://pinusmacbook:pinusmacbook@cluster0.iblwx.mongodb.net/ShoppingListProj?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+const uri = 'mongodb+srv://pinusmacbook:pinusmacbook@cluster0.iblwx.mongodb.net/ShoppingListProj?retryWrites=true&w=majority'
+
+mongoose.connect(uri || process.env.uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error(err))
 
