@@ -20,6 +20,7 @@ function App() {
   const userExists = async (name) =>{
     try{const res = await fetch(`api/${name}`);
     const data = await res.json();
+    console.log("got User");
     return data
   }
     catch(err){

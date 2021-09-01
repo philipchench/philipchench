@@ -14,6 +14,7 @@ const UserList = ({doesExist}) => {
     let history = useHistory();
 
     const name = useParams().userId;
+    console.log(name)
 
     const getList = async (name) => {
         try{const res = await fetch(`api/${name}`);
